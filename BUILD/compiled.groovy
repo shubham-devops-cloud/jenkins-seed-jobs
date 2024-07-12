@@ -5,7 +5,7 @@ folder(folderroot){
 
 // Multibranch Pipeline for Databases
 multibranchPipelineJob(folderroot + '/' + 'mysql'){
-    branchSource{
+    branchSources{
         git{
             id('1') // IMPORTANT: use a constant and unique identifier
             remote('git@github.com:shubham-devops-cloud/mysql.git')
