@@ -9,7 +9,7 @@ multibranchPipelineJob(folderroot + '/' + 'mysql'){
         git{
             id('1') // IMPORTANT: use a constant and unique identifier
             remote('git@github.com:shubham-devops-cloud/mysql.git')
-            credentials('GitHubSSH')
+            credentialsId('GitHubSSH')
             includes('main')
             excludes('')
         }
