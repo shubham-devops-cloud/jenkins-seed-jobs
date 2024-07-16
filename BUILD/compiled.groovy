@@ -1,42 +1,28 @@
+// Function to create multibranch pipeline jobs
+def createMultibranchPipelineJob(folderroot, repoName, repoUrl) {
+    multibranchPipelineJob("${folderroot}/${repoName}") {
+        branchSources {
+            git {
+                id('1') // IMPORTANT: use a constant and unique identifier
+                remote(repoUrl)
+                credentialsId('GitHubSSH')
+                includes('main')
+                excludes('')
+            }
+        }
+        orphanedItemStrategy {
+            discardOldItems {
+                numToKeep(6)
+            }
+        }
+    }
+}
+
 // Multibranch Pipeline for Databases
-
 String folderroot = "BUILD-JOBS"
-folder(folderroot){
 
-}
-
-// For MySql
-multibranchPipelineJob(folderroot + '/' + 'mysql'){
-    branchSources{
-        git{
-            id('1') // IMPORTANT: use a constant and unique identifier
-            remote('git@github.com:shubham-devops-cloud/mysql.git')
-            credentialsId('GitHubSSH')
-            includes('main')
-            excludes('')
-        }
-    }
-    orphanedItemStrategy {
-        discardOldItems {
-            numToKeep(6)
-        }
-    }
-}
-
-// For Elasticsearch
-multibranchPipelineJob(folderroot + '/' + 'elasticsearch'){
-    branchSources{
-        git{
-            id('1') // IMPORTANT: use a constant and unique identifier
-            remote('git@github.com:shubham-devops-cloud/elasticsearch.git')
-            credentialsId('GitHubSSH')
-            includes('main')
-            excludes('')
-        }
-    }
-    orphanedItemStrategy {
-        discardOldItems {
-            numToKeep(6)
-        }
-    }
+folder(folderroot) {
+    // Create jobs using the function
+    createMultibranchPipelineJob(folderroot, 'mysql', 'git@github.com:shubham-devops-cloud/mysql.git')
+    createMultibranchPipelineJob(folderroot, 'elasticsearch', 'git@github.com:shubham-devops-cloud/elasticsearch.git')
 }
