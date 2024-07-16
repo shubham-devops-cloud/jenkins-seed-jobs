@@ -1,3 +1,11 @@
+String folderroot = "BUILD-JOBS"
+
+folder(folderroot) {
+    // Create jobs using the function
+    createMultibranchPipelineJob(folderroot, 'mysql', 'git@github.com:shubham-devops-cloud/mysql.git')
+    createMultibranchPipelineJob(folderroot, 'elasticsearch', 'git@github.com:shubham-devops-cloud/elasticsearch.git')
+}
+
 // Function to create multibranch pipeline jobs
 def createMultibranchPipelineJob(folderroot, repoName, repoUrl) {
     multibranchPipelineJob("${folderroot}/${repoName}") {
@@ -16,13 +24,4 @@ def createMultibranchPipelineJob(folderroot, repoName, repoUrl) {
             }
         }
     }
-}
-
-// Multibranch Pipeline for Databases
-String folderroot = "BUILD-JOBS"
-
-folder(folderroot) {
-    // Create jobs using the function
-    createMultibranchPipelineJob(folderroot, 'mysql', 'git@github.com:shubham-devops-cloud/mysql.git')
-    createMultibranchPipelineJob(folderroot, 'elasticsearch', 'git@github.com:shubham-devops-cloud/elasticsearch.git')
 }
