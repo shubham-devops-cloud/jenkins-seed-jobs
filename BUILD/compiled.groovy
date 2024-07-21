@@ -4,6 +4,7 @@ folder(folderroot) {
     createMultibranchPipelineJob(folderroot, 'mysql', 'git@github.com:shubham-devops-cloud/mysql.git')
     createMultibranchPipelineJob(folderroot, 'elasticsearch', 'git@github.com:shubham-devops-cloud/elasticsearch.git')
     createMultibranchPipelineJob(folderroot, 'attendance', 'git@github.com:shubham-devops-cloud/attendance.git')
+    createMultibranchPipelineJob(folderroot, 'employee', 'git@github.com:shubham-devops-cloud/employee.git')
 }
 
 // Function to create multibranch pipeline jobs
