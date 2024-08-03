@@ -1,10 +1,10 @@
 sourceFile = readFileFromWorkspace("_lib/templates/jobs/ToolingJobsTemplate.groovy")
 jobs = new GroovyClassLoader(getClass().getClassLoader()).parseClass(sourceFile)
 
-def folderroot = 'DEPLOY-JOBS'
+def folderroot = 'DEPLOY-JOBS/HELM'
 def folderName = folderroot + "/helm"
 
-folder(folderName){
+folder(folderroot){
     displayName("HELM")
 }
 
