@@ -12,7 +12,7 @@ jobs.createJobWithBranchExtension(pipelineJob(folderroot + "/deploy_salary"), "e
     choiceParam('REPONAME', ['es-charts-salary'], 'Helm chart repo name')
     textParam{
         name('FEATUREIMAGE')
-        defaultValue("")
+        defaultValue('public.ecr.aws/j9k0i2s2/dev-or-employee-system:salary-main-0.0.1')
         description('Enter the image name which you want to deploy')
     }
     choiceParam('NAMESPACE', ['dev'], 'Kubernetes Namespace')
