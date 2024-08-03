@@ -1,11 +1,11 @@
 sourceFile = readFileFromWorkspace("_lib/templates/jobs/ToolingJobsTemplate.groovy")
 jobs = new GroovyClassLoader(getClass().getClassLoader()).parseClass(sourceFile)
 
-def folderroot = 'DEPLOY-JOBS/HELM'
+def folderroot = 'DEPLOY-JOBSs'
 def folderName = folderroot + "/helm"
 
 folder(folderroot){
-    displayName("HELM")
+    //displayName("HELM")
 }
 
 jobs.createJobWithBranchExtension(pipelineJob(folderName + "/deploy_salary"), "es-charts-salary", "main", fileName = "Jenkinsfile.deploy").parameters{
