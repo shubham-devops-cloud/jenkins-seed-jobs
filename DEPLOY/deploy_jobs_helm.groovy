@@ -55,3 +55,15 @@ jobs.createJobWithBranchExtension(pipelineJob(folderroot + "/deploy_salary"), "e
     }
     choiceParam('NAMESPACE', ['dev'], 'Kubernetes Namespace')
 }
+
+
+//Pipeline for Employee
+jobs.createJobWithBranchExtension(pipelineJob(folderroot + "/deploy_employee"), "es-charts-employee", "main", fileName = "Jenkinsfile.deploy").parameters{
+    choiceParam('REPONAME', ['es-charts-employee'], 'Helm chart repo name')
+    textParam{
+        name('FEATUREIMAGE')
+        defaultValue('public.ecr.aws/j9k0i2s2/dev-or-employee-system:employee-main-0.0.1')
+        description('Enter the image name which you want to deploy')
+    }
+    choiceParam('NAMESPACE', ['dev'], 'Kubernetes Namespace')
+}
