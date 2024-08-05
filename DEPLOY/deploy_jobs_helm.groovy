@@ -31,3 +31,15 @@ jobs.createJobWithBranchExtension(pipelineJob(folderroot + "/deploy_elasticsearc
     }
     choiceParam('NAMESPACE', ['dev'], 'Kubernetes Namespace')
 }
+
+
+//Pipeline for Attendance
+jobs.createJobWithBranchExtension(pipelineJob(folderroot + "/deploy_attendance"), "es-charts-attendance", "main", fileName = "Jenkinsfile.deploy").parameters{
+    choiceParam('REPONAME', ['es-charts-attendance'], 'Helm chart repo name')
+    textParam{
+        name('FEATUREIMAGE')
+        defaultValue('public.ecr.aws/j9k0i2s2/dev-or-employee-system:attendance-main-0.0.1')
+        description('Enter the image name which you want to deploy')
+    }
+    choiceParam('NAMESPACE', ['dev'], 'Kubernetes Namespace')
+}
